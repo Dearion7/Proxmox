@@ -23,8 +23,8 @@ var_cpu="1"
 var_ram="1024"
 var_os="debian"
 var_version="11"
-var_net="192.168.10.4/24"
-var_gate="192.168.10.1"
+var_net=192.168.10.4/24
+var_gate=192.168.10.1
 var_vlan="10"
 
 variables
