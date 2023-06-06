@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source <(curl -s https://raw.githubusercontent.com/tteck/Proxmox/main/misc/build.func)
+source <(curl -s https://raw.githubusercontent.com/Dearion7/Proxmox/main/build.func)
 
 function header_info {
 clear
@@ -15,34 +15,40 @@ EOF
 }
 header_info
 echo -e "Loading..."
+
+var_pw="M!8imPm9"
 APP="Uptime Kuma"
 var_disk="4"
 var_cpu="1"
 var_ram="1024"
 var_os="debian"
 var_version="11"
+var_net="192.168.10.4/24"
+var_gate="192.168.10.1"
+var_vlan="10"
+
 variables
 color
 catch_errors
 
 function default_settings() {
   CT_TYPE="1"
-  PW=""
+  PW="$var_pw"
   CT_ID=$NEXTID
   HN=$NSAPP
   DISK_SIZE="$var_disk"
   CORE_COUNT="$var_cpu"
   RAM_SIZE="$var_ram"
   BRG="vmbr0"
-  NET=192.168.10.4/24
-  GATE=192.168.10.1
+  NET="$var_net"
+  GATE="$var_gate"
   DISABLEIP6="yes"
   MTU=""
   SD=""
   NS=""
   MAC=""
-  VLAN="10"
-  SSH="no"
+  VLAN="$var_vlan"
+  SSH="yes"
   VERB="no"
   echo_default
 }
