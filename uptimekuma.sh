@@ -25,7 +25,6 @@ variables
 color
 catch_errors
 
-## Variables for creating a LXC Container
 function default_settings() {
   CT_TYPE="1"
   PW=""
@@ -48,7 +47,6 @@ function default_settings() {
   echo_default
 }
 
-## install Uptime Kuma from github
 function update_script() {
 header_info
 if [[ ! -d /opt/uptime-kuma ]]; then msg_error "No ${APP} Installation Found!"; exit; fi
@@ -80,7 +78,6 @@ start
 build_container
 description
 
-## Show URL IP information to show dashboard
 msg_ok "Completed Successfully!\n"
 echo -e "${APP} should be reachable by going to the following URL.
          ${BL}http://${IP}:3001${CL} \n"
