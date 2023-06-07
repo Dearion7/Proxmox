@@ -92,8 +92,7 @@ echo_settings_vars() {
   echo -e "${DGN}Using Distribution: ${BGN}$var_os${CL}"
   echo -e "${DGN}Using $var_os Version: ${BGN}$var_version${CL}"
   echo -e "${DGN}Using Container Type: ${BGN}$CT_TYPE${CL}"
-  echo -e "${DGN}Using Root Password: ${BGN}$var_pw${CL}"
-  echo -e "${DGN}Using Container ID: ${BGN}$NEXTID${CL}"
+  echo -e "${DGN}Using Container ID: ${BGN}$CT_ID${CL}"
   echo -e "${DGN}Using Hostname: ${BGN}$NSAPP${CL}"
   echo -e "${DGN}Using Disk Size: ${BGN}$var_disk${CL}${DGN}GB${CL}"
   echo -e "${DGN}Allocated Cores ${BGN}$var_cpu${CL}"
@@ -125,7 +124,7 @@ exit-script() {
 user_settings() {
   basic_settings
   echo_settings
-  
+
   whiptail --msgbox --title "Here is an instructional tip:" "To make a selection, use the Spacebar." 8 58
   if PW1=$(whiptail --inputbox "\nSet Root Password (needed for root ssh access)" 9 58 --title "PASSWORD(leave blank for automatic login)" 3>&1 1>&2 2>&3); then
     if [ -z $PW1 ]; then
