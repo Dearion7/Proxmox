@@ -102,7 +102,7 @@ echo_settings_vars() {
   echo -e "${DGN}Using Interface MTU Size: ${BGN}$MTU${CL}"
   echo -e "${DGN}Using DNS Search Domain: ${BGN}Host${CL}"
   echo -e "${DGN}Using DNS Server Address: ${BGN}Host${CL}"
-  echo -e "${DGN}Using MAC Address: ${BGN}Default${CL}"
+  echo -e "${DGN}Using MAC Address: ${BGN}$MAC${CL}"
   if [[ "$APP" == "Docker" || "$APP" == "Umbrel" || "$APP" == "CasaOS" || "$APP" == "Home Assistant" ]]; then
     echo -e "${DGN}Enable Fuse Overlayfs (ZFS): ${BGN}No${CL}"
   fi
@@ -121,6 +121,7 @@ user_settings() {
   MTU="Default"
   SD="Host"
   NS="Host"
+  MAC="Default"
 
   basic_settings
   echo_settings
