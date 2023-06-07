@@ -123,7 +123,7 @@ exit-script() {
 
 # This function allows the user to configure needed settings for the script.
 user_settings() {
-  basic-settings
+  basic_settings
   
   whiptail --msgbox --title "Here is an instructional tip:" "To make a selection, use the Spacebar." 8 58
   if PW1=$(whiptail --inputbox "\nSet Root Password (needed for root ssh access)" 9 58 --title "PASSWORD(leave blank for automatic login)" 3>&1 1>&2 2>&3); then
