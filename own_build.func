@@ -212,7 +212,7 @@ user_settings() {
   else
     clear
     header_info
-    echo -e "${RD}Using User Settings${CL}"
+    echo -e "${RD}Using User Settings 2${CL}"
     user_settings
   fi
 }
