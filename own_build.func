@@ -98,15 +98,11 @@ echo_settings_vars() {
   echo -e "${DGN}Allocated Cores ${BGN}$var_cpu${CL}"
   echo -e "${DGN}Allocated Ram ${BGN}$var_ram${CL}"
   echo -e "${DGN}Using Bridge: ${BGN}$var_brg${CL}"
-  echo -e "${DGN}Using Static IP Address: ${BGN}$var_net${CL}"
-  echo -e "${DGN}Using Gateway Address: ${BGN}$var_gate${CL}"
   echo -e "${DGN}Disable IPv6: ${BGN}$var_disable_ipv6${CL}"
   echo -e "${DGN}Using Interface MTU Size: ${BGN}Default${CL}"
   echo -e "${DGN}Using DNS Search Domain: ${BGN}Host${CL}"
   echo -e "${DGN}Using DNS Server Address: ${BGN}Host${CL}"
   echo -e "${DGN}Using MAC Address: ${BGN}Default${CL}"
-  echo -e "${DGN}Using VLAN Tag: ${BGN}$VLAN${CL}"
-  echo -e "${DGN}Enable Root SSH Access: ${BGN}$SSH${CL}"
   if [[ "$APP" == "Docker" || "$APP" == "Umbrel" || "$APP" == "CasaOS" || "$APP" == "Home Assistant" ]]; then
     echo -e "${DGN}Enable Fuse Overlayfs (ZFS): ${BGN}No${CL}"
   fi
