@@ -99,7 +99,7 @@ echo_settings_vars() {
   echo -e "${DGN}Allocated Ram ${BGN}$var_ram${CL}"
   echo -e "${DGN}Using Bridge: ${BGN}$var_brg${CL}"
   echo -e "${DGN}Disable IPv6: ${BGN}$var_disable_ipv6${CL}"
-  echo -e "${DGN}Using Interface MTU Size: ${BGN}Default${CL}"
+  echo -e "${DGN}Using Interface MTU Size: ${BGN}$MTU${CL}"
   echo -e "${DGN}Using DNS Search Domain: ${BGN}Host${CL}"
   echo -e "${DGN}Using DNS Server Address: ${BGN}Host${CL}"
   echo -e "${DGN}Using MAC Address: ${BGN}Default${CL}"
@@ -118,6 +118,10 @@ exit-script() {
 
 # This function allows the user to configure needed settings for the script.
 user_settings() {
+  MTU="Default"
+  SD="Host"
+  NS="Host"
+
   basic_settings
   echo_settings
 
