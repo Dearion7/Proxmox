@@ -88,7 +88,7 @@ ssh_check() {
 }
 
 # This function displays the default values for various settings.
-echo_settings() {
+echo_settings_vars() {
   echo -e "${DGN}Using Distribution: ${BGN}$var_os${CL}"
   echo -e "${DGN}Using $var_os Version: ${BGN}$var_version${CL}"
   echo -e "${DGN}Using Container Type: ${BGN}$CT_TYPE${CL}"
@@ -213,7 +213,7 @@ user_settings() {
     clear
     header_info
     echo -e "${RD}Using User Settings${CL}"
-    echo_settings
+    user_settings
   fi
 }
 

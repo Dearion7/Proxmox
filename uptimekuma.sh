@@ -44,7 +44,7 @@ function basic_settings() {
 }
 
 function echo_settings() {
-  echo_default
+  echo_settings_vars
 }
 
 function update_script() {
