@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source <(curl -s https://raw.githubusercontent.com/Dearion7/Proxmox/main/own_build.func)
+source <(curl -s https://raw.githubusercontent.com/Dearion7/Proxmox/main/build.func)
 
 function header_info {
 clear
