@@ -18,3 +18,89 @@ color() {
   BFR="\\r\\033[K"
   HOLD="-"
 }
+
+# This function enables error handling in the script by setting options and defining a trap for the ERR signal.
+catch_errors() {
+  set -Eeuo pipefail
+  trap 'error_handler $LINENO "$BASH_COMMAND"' ERR
+}
+
+# This function is called when an error occurs. It receives the exit code, line number, and command that caused the error, and displays an error message.
+error_handler() {
+  local exit_code="$?"
+  local line_number="$1"
+  local command="$2"
+  local error_message="${RD}[ERROR]${CL} in line ${RD}$line_number${CL}: exit code ${RD}$exit_code${CL}: while executing command ${YW}$command${CL}"
+  echo -e "\n$error_message\n"
+}
+
+# This function displays an informational message with a yellow color.
+msg_info() {
+  local msg="$1"
+  echo -ne " ${HOLD} ${YW}${msg}..."
+}
+
+# This function displays a success message with a green color.
+msg_ok() {
+  local msg="$1"
+  echo -e "${BFR} ${CM} ${GN}${msg}${CL}"
+}
+
+# This function displays an error message with a red color.
+msg_error() {
+  local msg="$1"
+  echo -e "${BFR} ${CROSS} ${RD}${msg}${CL}"
+}
+
+# This function is called when the user decides to exit the script. It clears the screen and displays an exit message.
+exit-script() {
+  clear
+  echo -e "⚠  User exited script \n"
+  exit
+}
+
+# This function allows the user to configure needed settings for the script.
+user_settings() {
+  
+}
+
+
+start(){
+  if command -v pveversion >/dev/null 2>&1; then
+    if ! (whiptail --title "${APP} LXC" --yesno "This will create a New ${APP} LXC. Proceed?" 10 58); then
+      clear
+      echo -e "⚠  User exited script \n"
+      exit
+    fi
+    install_script
+  fi
+
+  if ! command -v pveversion >/dev/null 2>&1; then
+    if ! (whiptail --title "${APP} LXC UPDATE" --yesno "This will update ${APP} LXC.  Proceed?" 10 58); then
+      clear
+      echo -e "⚠  User exited script \n"
+      exit
+    fi
+    update_script
+  fi
+}
+
+# This function collects user settings and integrates all the collected information.
+build_container() {
+  export URL="$url"
+  export USERNAME="$username"
+  export PASSWORD="$password"
+  export REALM="$realm"
+  export APPLICATION="$APP"
+  export CT_PASSWORD="$PW"
+  export VERBOSE="$VERB"
+  export SSH_ROOT="${SSH}"
+  export CTID="$CT_ID"
+  export CTTYPE="$CT_TYPE"
+  export PCT_OSTYPE="$var_os"
+  export PCT_OSVERSION="$var_version"
+  export PCT_DISK_SIZE="$DISK_SIZE"
+
+  # This executes create_lxc.sh and creates the container and .conf file
+  bash -c "$(wget -qLO - https://raw.githubusercontent.com/Dearion7/Proxmox/main/create_lxc.sh)" || exit
+}
